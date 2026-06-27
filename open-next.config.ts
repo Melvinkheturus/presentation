@@ -1,6 +1,5 @@
-import type { OpenNextConfig } from "@opennextjs/aws/types/config.js";
-
-const config: OpenNextConfig = {
+// @ts-nocheck
+const config = {
   default: {
     minify: true,
   },
