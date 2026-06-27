@@ -1,12 +1,33 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import { ArrowRight, ArrowRightLeft, Users, ShieldAlert, CheckCircle2, BookmarkCheck, GitPullRequest, X } from "lucide-react";
+
+// === STOCK IMAGE URLS (Unsplash - free to use) ===
+const STOCK_IMAGES = {
+  // Rocket / transformation visual
+  transform: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&q=80&auto=format",
+  // Broken gears / system failure
+  gears: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1920&q=80&auto=format",
+  // Team handshake / commitment
+  commitment: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1920&q=80&auto=format",
+};
 
 // PAGE 11: Scale Ourselves First
 export function Slide11() {
   return (
     <div className="relative w-full h-full flex flex-col justify-between p-12 lg:p-20 bg-zinc-950 overflow-y-auto no-scrollbar slide-bg">
+      {/* Transformation / space background */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src={STOCK_IMAGES.transform}
+          alt=""
+          fill
+          className="object-cover opacity-12"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/90 to-zinc-950/70" />
+      </div>
       {/* Top Header */}
       <div className="flex justify-between items-center z-10 gsap-fade-up">
         <span className="text-xs font-bold uppercase tracking-[0.22em] text-violet-400 font-roboto">
@@ -93,6 +114,16 @@ export function Slide11() {
 export function Slide12() {
   return (
     <div className="relative w-full h-full flex flex-col justify-between p-12 lg:p-20 bg-zinc-950 overflow-y-auto no-scrollbar slide-bg">
+      {/* Gears / machinery background */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src={STOCK_IMAGES.gears}
+          alt=""
+          fill
+          className="object-cover opacity-8"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-zinc-950 via-zinc-950/95 to-zinc-950/80" />
+      </div>
       {/* Top Header */}
       <div className="flex justify-between items-center z-10 gsap-fade-up">
         <span className="text-xs font-bold uppercase tracking-[0.22em] text-rose-400 font-roboto">
@@ -342,6 +373,16 @@ export function Slide14() {
 export function Slide15() {
   return (
     <div className="relative w-full h-full flex flex-col justify-between p-12 lg:p-20 bg-zinc-950 overflow-y-auto no-scrollbar slide-bg">
+      {/* Team commitment background */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src={STOCK_IMAGES.commitment}
+          alt=""
+          fill
+          className="object-cover opacity-8"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/90 to-zinc-950/70" />
+      </div>
       {/* Top Header */}
       <div className="flex justify-between items-center z-10 gsap-fade-up">
         <span className="text-xs font-bold uppercase tracking-[0.22em] text-violet-400 font-roboto">

@@ -4,10 +4,36 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { Check, X, Sparkles, AlertCircle, Headphones } from "lucide-react";
 
+// === STOCK IMAGE URLS (Unsplash - free to use) ===
+const STOCK_IMAGES = {
+  // Dramatic dark cityscape at night — keynote opening mood
+  heroCity: "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1920&q=80&auto=format",
+  // Sunrise over mountains — new beginning / reset
+  sunrise: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1920&q=80&auto=format",
+  // Abstract tangled wires — AirPods metaphor
+  tangled: "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&q=80&auto=format",
+  // Dark moody meeting room — brutal truth
+  boardroom: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=80&auto=format",
+  // Team strategy / hands together — identity
+  strategy: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1920&q=80&auto=format",
+};
+
 // PAGE 1: Keynote Welcome
 export function Slide1() {
   return (
     <div className="relative w-full h-full flex flex-col justify-between p-12 lg:p-20 bg-black overflow-y-auto no-scrollbar">
+      {/* Full-bleed cinematic background */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src={STOCK_IMAGES.heroCity}
+          alt=""
+          fill
+          className="object-cover opacity-30"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/40" />
+      </div>
+
       {/* Subtle purple radial glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-violet-600/5 rounded-full blur-3xl pointer-events-none" />
 
@@ -30,10 +56,10 @@ export function Slide1() {
         </div>
 
         <div className="space-y-4 max-w-2xl mt-4 gsap-fade-up">
-          <h1 className="text-4xl lg:text-5xl font-extrabold tracking-widest uppercase text-white font-sans">
+          <h1 className="text-4xl lg:text-5xl font-extrabold tracking-widest uppercase text-white font-sans drop-shadow-lg">
             MERGEX 2.0
           </h1>
-          <p className="text-zinc-500 font-serif italic text-lg lg:text-xl font-light">
+          <p className="text-zinc-400 font-serif italic text-lg lg:text-xl font-light drop-shadow-md">
             From a Service Company to a Business Growth Partner
           </p>
         </div>
@@ -58,6 +84,17 @@ export function Slide1() {
 export function Slide2() {
   return (
     <div className="relative w-full h-full flex flex-col justify-between p-12 lg:p-20 bg-zinc-950 overflow-y-auto no-scrollbar slide-bg">
+      {/* Sunrise background — new beginning */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src={STOCK_IMAGES.sunrise}
+          alt=""
+          fill
+          className="object-cover opacity-15"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-zinc-950 via-zinc-950/90 to-zinc-950/70" />
+      </div>
+
       {/* Top Header */}
       <div className="flex justify-between items-center z-10 gsap-fade-up">
         <span className="text-xs font-bold uppercase tracking-[0.22em] text-violet-400 font-roboto">
@@ -163,19 +200,17 @@ export function Slide3() {
             </div>
 
             <div className="space-y-4">
-              {/* Tangled SVG animation */}
-              <div className="h-28 w-full bg-zinc-950 rounded-2xl flex items-center justify-center border border-zinc-900 overflow-hidden relative">
-                <svg className="w-40 h-24" viewBox="0 0 100 50">
-                  <path 
-                    d="M 10,25 C 20,5 30,45 40,25 C 50,5 35,45 60,10 C 70,35 80,15 90,25 C 75,45 65,5 50,25 C 30,5 20,40 10,25" 
-                    fill="none" 
-                    stroke="#f43f5e" 
-                    strokeWidth="1.5" 
-                    className="animate-pulse"
-                  />
-                </svg>
-                <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/80 to-transparent flex items-end justify-center p-2">
-                  <span className="text-[10px] text-zinc-500 font-mono">Tangled state (V1)</span>
+              {/* Tangled Image */}
+              <div className="h-52 w-full bg-zinc-950 rounded-2xl border border-zinc-900 overflow-hidden relative">
+                <Image
+                  src="/tangled_earphones.png"
+                  alt="Tangled state (V1)"
+                  fill
+                  className="object-cover opacity-80 group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/90 via-transparent to-transparent" />
+                <div className="absolute bottom-2 left-0 right-0 text-center z-10">
+                  <span className="text-[10px] text-zinc-300 font-mono font-bold bg-black/60 px-2 py-0.5 rounded-full border border-rose-500/20">Tangled state (V1)</span>
                 </div>
               </div>
 
@@ -205,22 +240,17 @@ export function Slide3() {
             </div>
 
             <div className="space-y-4">
-              {/* Sleek wireless audio waves */}
-              <div className="h-28 w-full bg-zinc-950 rounded-2xl flex items-center justify-center border border-zinc-900 overflow-hidden relative">
-                <div className="flex items-center gap-1.5 justify-center">
-                  {[1, 2, 3, 4, 5, 4, 3, 2, 1].map((h, i) => (
-                    <div 
-                      key={i} 
-                      className="w-1 bg-violet-400 rounded-full transition-all duration-500 animate-pulse" 
-                      style={{ 
-                        height: `${h * 10}px`,
-                        animationDelay: `${i * 100}ms`
-                      }}
-                    />
-                  ))}
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/80 to-transparent flex items-end justify-center p-2">
-                  <span className="text-[10px] text-zinc-500 font-mono">Streamlined state (V2)</span>
+              {/* Sleek Wireless AirPods Image */}
+              <div className="h-52 w-full bg-zinc-950 rounded-2xl border border-zinc-900 overflow-hidden relative">
+                <Image
+                  src="/wireless_airpods.png"
+                  alt="Streamlined state (V2)"
+                  fill
+                  className="object-cover opacity-80 group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/90 via-transparent to-transparent" />
+                <div className="absolute bottom-2 left-0 right-0 text-center z-10">
+                  <span className="text-[10px] text-zinc-300 font-mono font-bold bg-black/60 px-2 py-0.5 rounded-full border border-violet-500/20">Streamlined state (V2)</span>
                 </div>
               </div>
 
@@ -255,6 +285,17 @@ export function Slide3() {
 export function Slide4() {
   return (
     <div className="relative w-full h-full flex flex-col justify-between p-12 lg:p-20 bg-black overflow-y-auto no-scrollbar slide-bg">
+      {/* Moody boardroom background */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src={STOCK_IMAGES.boardroom}
+          alt=""
+          fill
+          className="object-cover opacity-10"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-black/60" />
+      </div>
+
       {/* Top Header */}
       <div className="flex justify-between items-center z-10 gsap-fade-up">
         <span className="text-xs font-bold uppercase tracking-[0.22em] text-rose-400 font-roboto">
@@ -325,6 +366,17 @@ export function Slide4() {
 export function Slide5() {
   return (
     <div className="relative w-full h-full flex flex-col justify-between p-12 lg:p-20 bg-zinc-950 overflow-y-auto no-scrollbar slide-bg">
+      {/* Team strategy background */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src={STOCK_IMAGES.strategy}
+          alt=""
+          fill
+          className="object-cover opacity-8"
+        />
+        <div className="absolute inset-0 bg-gradient-to-l from-zinc-950 via-zinc-950/95 to-zinc-950/80" />
+      </div>
+
       {/* Top Header */}
       <div className="flex justify-between items-center z-10 gsap-fade-up">
         <span className="text-xs font-bold uppercase tracking-[0.22em] text-violet-400 font-roboto">
@@ -347,7 +399,7 @@ export function Slide5() {
             </p>
           </div>
 
-          <div className="bg-zinc-900/20 border border-zinc-900 rounded-3xl p-6 space-y-4 gsap-scale-in">
+          <div className="bg-zinc-900/20 border border-zinc-900 rounded-3xl p-6 space-y-4 gsap-scale-in backdrop-blur-sm">
             <span className="text-xs font-bold text-rose-400 uppercase tracking-widest block font-mono">
               MergeX is NOT
             </span>

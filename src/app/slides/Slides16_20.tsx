@@ -1,8 +1,25 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import confetti from "canvas-confetti";
 import { Calendar, TrendingUp, Heart, Sparkles, Award, CheckCircle2, Bookmark } from "lucide-react";
+
+// === STOCK IMAGE URLS (Unsplash - free to use) ===
+const STOCK_IMAGES = {
+  // Road / path stretching ahead — roadmap
+  roadmap: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=80&auto=format",
+  // City skyline at golden hour — success
+  skyline: "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=1920&q=80&auto=format",
+  // Dramatic sunset / legacy
+  legacy: "https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?w=1920&q=80&auto=format",
+  // Leader walking into light
+  leader: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1920&q=80&auto=format",
+  // Celebration / confetti moment
+  celebration: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1920&q=80&auto=format",
+  // Dramatic spotlight / stage — closing
+  spotlight: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1920&q=80&auto=format",
+};
 
 // PAGE 16: The Next 90 Days
 export function Slide16() {
@@ -46,6 +63,16 @@ export function Slide16() {
 
   return (
     <div className="relative w-full h-full flex flex-col justify-between p-12 lg:p-20 bg-zinc-950 overflow-y-auto no-scrollbar slide-bg">
+      {/* Mountain road background — roadmap */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src={STOCK_IMAGES.roadmap}
+          alt=""
+          fill
+          className="object-cover opacity-12"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/90 to-zinc-950/70" />
+      </div>
       {/* Top Header */}
       <div className="flex justify-between items-center z-10 gsap-fade-up">
         <span className="text-xs font-bold uppercase tracking-[0.22em] text-violet-400 font-roboto">
@@ -125,6 +152,16 @@ export function Slide16() {
 export function Slide17() {
   return (
     <div className="relative w-full h-full flex flex-col justify-between p-12 lg:p-20 bg-zinc-950 overflow-y-auto no-scrollbar slide-bg">
+      {/* City skyline background — success */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src={STOCK_IMAGES.skyline}
+          alt=""
+          fill
+          className="object-cover opacity-10"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/85 to-zinc-950/60" />
+      </div>
       {/* Top Header */}
       <div className="flex justify-between items-center z-10 gsap-fade-up">
         <span className="text-xs font-bold uppercase tracking-[0.22em] text-violet-400 font-roboto">
@@ -193,6 +230,16 @@ export function Slide17() {
 export function Slide18() {
   return (
     <div className="relative w-full h-full flex flex-col justify-between p-12 lg:p-20 bg-zinc-950 overflow-y-auto no-scrollbar slide-bg">
+      {/* Sunset / legacy background */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src={STOCK_IMAGES.legacy}
+          alt=""
+          fill
+          className="object-cover opacity-10"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-zinc-950 via-zinc-950/90 to-zinc-950/70" />
+      </div>
       {/* Top Header */}
       <div className="flex justify-between items-center z-10 gsap-fade-up">
         <span className="text-xs font-bold uppercase tracking-[0.22em] text-violet-400 font-roboto">
@@ -259,6 +306,16 @@ export function Slide18() {
 export function Slide19() {
   return (
     <div className="relative w-full h-full flex flex-col justify-between p-12 lg:p-20 bg-zinc-950 overflow-y-auto no-scrollbar slide-bg">
+      {/* Leader / personal promise background */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src={STOCK_IMAGES.leader}
+          alt=""
+          fill
+          className="object-cover opacity-8"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/95 to-zinc-950/80" />
+      </div>
       {/* Top Header */}
       <div className="flex justify-between items-center z-10 gsap-fade-up">
         <span className="text-xs font-bold uppercase tracking-[0.22em] text-violet-400 font-roboto">
@@ -342,6 +399,16 @@ export function Slide20() {
 
   return (
     <div className="relative w-full h-full flex flex-col justify-between p-12 lg:p-20 bg-zinc-950 overflow-y-auto no-scrollbar slide-bg">
+      {/* Celebration background */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src={STOCK_IMAGES.celebration}
+          alt=""
+          fill
+          className="object-cover opacity-12"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/85 to-zinc-950/70" />
+      </div>
       {/* Top Header */}
       <div className="flex justify-between items-center z-10 gsap-fade-up">
         <span className="text-xs font-bold uppercase tracking-[0.22em] text-violet-400 font-roboto">
@@ -413,6 +480,16 @@ export function Slide20() {
 export function SlideTheQuestion() {
   return (
     <div className="relative w-full h-full flex flex-col justify-between p-12 lg:p-20 bg-black overflow-y-auto no-scrollbar">
+      {/* Dramatic spotlight / stage background */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src={STOCK_IMAGES.spotlight}
+          alt=""
+          fill
+          className="object-cover opacity-15"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-black/50" />
+      </div>
       {/* Top Header */}
       <div className="flex justify-between items-center z-10 gsap-fade-up">
         <span className="text-xs font-bold uppercase tracking-[0.22em] text-violet-400 font-roboto">

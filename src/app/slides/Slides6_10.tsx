@@ -1,8 +1,21 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 import { TrendingUp, Target, ShieldCheck, Activity, Award, Briefcase, Zap, Database, Cpu, PieChart, X, Check, ArrowRight } from "lucide-react";
+
+// === STOCK IMAGE URLS (Unsplash - free to use) ===
+const STOCK_IMAGES = {
+  // Data analytics / diagnosis visual
+  diagnosis: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1920&q=80&auto=format",
+  // Exponential growth / skyscraper view
+  growth: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=80&auto=format",
+  // Lighthouse / compass — vision & purpose
+  vision: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1920&q=80&auto=format",
+  // Mountain peak — scaling heights
+  peak: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1920&q=80&auto=format",
+};
 
 // PAGE 6: The Real Problem (Constraint Diagnosis)
 export function Slide6() {
@@ -10,6 +23,16 @@ export function Slide6() {
 
   return (
     <div className="relative w-full h-full flex flex-col justify-between p-12 lg:p-20 bg-zinc-950 overflow-y-auto no-scrollbar slide-bg">
+      {/* Data analysis background */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src={STOCK_IMAGES.diagnosis}
+          alt=""
+          fill
+          className="object-cover opacity-8"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/95 to-zinc-950/80" />
+      </div>
       {/* Top Header */}
       <div className="flex justify-between items-center z-10 gsap-fade-up">
         <span className="text-xs font-bold uppercase tracking-[0.22em] text-violet-400 font-roboto">
@@ -54,65 +77,67 @@ export function Slide6() {
         </div>
 
         {/* Diagram Flows */}
-        <div className="h-64 flex flex-col justify-center items-center bg-zinc-950/40 border border-zinc-900 rounded-3xl p-6 relative gsap-scale-in">
+        <div className="h-72 flex flex-col justify-between items-center bg-zinc-950/40 border border-zinc-900 rounded-3xl p-6 gsap-scale-in">
           
-          {activeTab === "wrong" ? (
-            <div className="flex flex-col items-center gap-4 text-center animate-fade-in">
-              <div className="px-5 py-3.5 bg-zinc-900 border border-zinc-800 rounded-2xl">
-                <span className="text-sm font-semibold text-zinc-300">Revenue Stopped Growing</span>
+          <div className="my-auto flex flex-col justify-center items-center w-full">
+            {activeTab === "wrong" ? (
+              <div className="flex flex-col items-center gap-3 text-center animate-fade-in">
+                <div className="px-5 py-2.5 bg-zinc-900 border border-zinc-800 rounded-xl">
+                  <span className="text-xs font-semibold text-zinc-300">Revenue Stopped Growing</span>
+                </div>
+                
+                <div className="h-6 w-[2px] bg-rose-500/40 relative">
+                  <div className="absolute bottom-0 -left-1 text-[10px] text-rose-500">▼</div>
+                </div>
+
+                <div className="px-5 py-2.5 bg-rose-500/10 border border-rose-500/20 rounded-xl shadow-lg shadow-rose-500/5">
+                  <span className="text-xs font-semibold text-rose-400">"We Need More Marketing"</span>
+                </div>
+
+                <div className="h-6 w-[2px] bg-rose-500/40 relative">
+                  <div className="absolute bottom-0 -left-1 text-[10px] text-rose-500">▼</div>
+                </div>
+
+                <span className="text-xs font-bold text-rose-500 tracking-wider uppercase font-mono">
+                  ❌ Wrong Diagnosis
+                </span>
               </div>
-              
-              <div className="h-8 w-[2px] bg-rose-500/40 relative">
-                <div className="absolute bottom-0 -left-1 text-xs text-rose-500">▼</div>
+            ) : (
+              <div className="flex flex-wrap justify-center items-center gap-2 lg:gap-4 text-center w-full max-w-4xl select-none">
+                
+                <div className="px-4 py-2.5 bg-zinc-900 border border-zinc-800 rounded-xl">
+                  <span className="text-xs font-semibold text-zinc-300">Revenue Stopped</span>
+                </div>
+                
+                <span className="text-violet-500 font-bold">→</span>
+
+                <div className="px-4 py-2.5 bg-zinc-900 border border-zinc-800 rounded-xl hover:border-violet-500/30 transition-colors">
+                  <span className="text-xs font-semibold text-zinc-300">Business Diagnosis</span>
+                </div>
+
+                <span className="text-violet-500 font-bold">→</span>
+
+                <div className="px-4 py-2.5 bg-violet-600/10 border border-violet-500/30 rounded-xl shadow-lg shadow-violet-500/5">
+                  <span className="text-xs font-bold text-violet-400">Constraint ID</span>
+                </div>
+
+                <span className="text-violet-500 font-bold">→</span>
+
+                <div className="px-4 py-2.5 bg-zinc-900 border border-zinc-800 rounded-xl hover:border-violet-500/30 transition-colors">
+                  <span className="text-xs font-semibold text-zinc-300">Root Cause</span>
+                </div>
+
+                <span className="text-violet-500 font-bold">→</span>
+
+                <div className="px-4 py-2.5 bg-emerald-500/10 border border-emerald-500/30 rounded-xl text-emerald-400 shadow-md">
+                  <span className="text-xs font-bold">Right Solution</span>
+                </div>
+                
               </div>
+            )}
+          </div>
 
-              <div className="px-5 py-3.5 bg-rose-500/10 border border-rose-500/20 rounded-2xl shadow-lg shadow-rose-500/5">
-                <span className="text-sm font-semibold text-rose-400">"We Need More Marketing"</span>
-              </div>
-
-              <div className="h-8 w-[2px] bg-rose-500/40 relative">
-                <div className="absolute bottom-0 -left-1 text-xs text-rose-500">▼</div>
-              </div>
-
-              <span className="text-base font-bold text-rose-500 tracking-wider uppercase font-mono">
-                ❌ Wrong Diagnosis
-              </span>
-            </div>
-          ) : (
-            <div className="flex flex-wrap justify-center items-center gap-2 lg:gap-4 text-center w-full max-w-4xl select-none">
-              
-              <div className="px-4 py-2.5 bg-zinc-900 border border-zinc-800 rounded-xl">
-                <span className="text-xs font-semibold text-zinc-300">Revenue Stopped</span>
-              </div>
-              
-              <span className="text-violet-500 font-bold">→</span>
-
-              <div className="px-4 py-2.5 bg-zinc-900 border border-zinc-800 rounded-xl hover:border-violet-500/30 transition-colors">
-                <span className="text-xs font-semibold text-zinc-300">Business Diagnosis</span>
-              </div>
-
-              <span className="text-violet-500 font-bold">→</span>
-
-              <div className="px-4 py-2.5 bg-violet-600/10 border border-violet-500/30 rounded-xl shadow-lg shadow-violet-500/5">
-                <span className="text-xs font-bold text-violet-400">Constraint ID</span>
-              </div>
-
-              <span className="text-violet-500 font-bold">→</span>
-
-              <div className="px-4 py-2.5 bg-zinc-900 border border-zinc-800 rounded-xl hover:border-violet-500/30 transition-colors">
-                <span className="text-xs font-semibold text-zinc-300">Root Cause</span>
-              </div>
-
-              <span className="text-violet-500 font-bold">→</span>
-
-              <div className="px-4 py-2.5 bg-emerald-500/10 border border-emerald-500/30 rounded-xl text-emerald-400 shadow-md">
-                <span className="text-xs font-bold">Right Solution</span>
-              </div>
-              
-            </div>
-          )}
-
-          <div className="absolute bottom-3 text-[10px] text-zinc-500 font-mono">
+          <div className="text-[10px] text-zinc-500 font-mono mt-4">
             {activeTab === "right" ? "Focusing on diagnosis over blind services" : "Blindly guessing the growth block"}
           </div>
         </div>
@@ -356,6 +381,16 @@ export function Slide9() {
 export function Slide10() {
   return (
     <div className="relative w-full h-full flex flex-col justify-between p-12 lg:p-20 bg-zinc-950 overflow-y-auto no-scrollbar slide-bg">
+      {/* Mountain peak background — vision */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src={STOCK_IMAGES.peak}
+          alt=""
+          fill
+          className="object-cover opacity-10"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/90 to-zinc-950/70" />
+      </div>
       {/* Top Header */}
       <div className="flex justify-between items-center z-10 gsap-fade-up">
         <span className="text-xs font-bold uppercase tracking-[0.22em] text-violet-400 font-roboto">
@@ -433,6 +468,16 @@ const chartData = [
 export function Slide7_5() {
   return (
     <div className="relative w-full h-full flex flex-col justify-between p-12 lg:p-20 bg-zinc-950 overflow-y-auto no-scrollbar slide-bg">
+      {/* Growth / skyscraper background */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src={STOCK_IMAGES.growth}
+          alt=""
+          fill
+          className="object-cover opacity-8"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-zinc-950 via-zinc-950/95 to-zinc-950/80" />
+      </div>
       {/* Top Header */}
       <div className="flex justify-between items-center z-10 gsap-fade-up">
         <span className="text-xs font-bold uppercase tracking-[0.22em] text-violet-400 font-roboto">
